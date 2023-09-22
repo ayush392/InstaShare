@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + path.extname(file.originalname);
-    cb(null, file.fieldname+ "_" + uniqueSuffix);
+    cb(null, file.fieldname + "_" + uniqueSuffix);
   },
 });
 const upload = multer({ storage: storage }).single("myfile");
@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
     // validate request
     console.log(req.file);
     if (!req.file) {
-      return res.send("please upload a file");
+      return res.json("please upload a file");
     }
     if (err) {
       return res.status(500).send({ error: err.message });
@@ -38,7 +38,9 @@ router.post("/", (req, res) => {
     const response = await file.save();
     console.log(response);
 
-    return res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
+    return res.json({
+      file: `${process.env.APP_BASE_URL}/files/${response.uuid}`,
+    });
   });
 });
 module.exports = router;
