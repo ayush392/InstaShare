@@ -17,9 +17,9 @@ app.set("view engine", "ejs");
 app.use(express.json());
 // Routes
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+// app.get("/", (req, res) => {
+//   res.send("hello");
+// });
 
 app.use("/api/files/send", require("./routes/send"));
 app.use("/api/files", require("./routes/files"));

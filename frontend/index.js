@@ -15,13 +15,12 @@ const emailForm = document.querySelector("#emailForm");
 
 const toast = document.querySelector(".toast");
 
-const baseURL = "http://localhost:3000";
+const baseURL = "https://fair-erin-jellyfish-coat.cyclic.cloud";
 const uploadURL = `${baseURL}/api/files`;
 console.log(uploadURL);
 const emailURL = `${baseURL}/api/files/send`;
 
 const maxAllowedSize = 8 * 1024 * 1024 * 1024; //8GB
-
 
 browseBtn.addEventListener("click", () => {
   fileInput.click();
@@ -30,7 +29,7 @@ browseBtn.addEventListener("click", () => {
 dropZone.addEventListener("drop", (e) => {
   e.preventDefault();
   console.log("event listnner is active : ", e);
-     console.log("dropped", e.dataTransfer.files[0]);
+  console.log("dropped", e.dataTransfer.files[0]);
   const files = e.dataTransfer.files;
   if (files.length === 1) {
     if (files[0].size < maxAllowedSize) {
