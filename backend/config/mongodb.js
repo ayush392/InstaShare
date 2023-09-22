@@ -4,9 +4,7 @@ main().catch((err) => console.log(err));
 
 async function main() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://admin-ayush:1FjaDeuIbWmb5Apm@cluster0.alop5hl.mongodb.net/fileUploadTestDB"
-    );
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("connected");
   } catch (error) {
     console.log(error.message);
