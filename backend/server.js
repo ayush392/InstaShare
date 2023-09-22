@@ -2,9 +2,9 @@ const express = require("express");
 const mongo = require("./config/mongodb");
 const path = require("path");
 const app = express();
-const sendEmail = require('./services/email')
-require('dotenv').config()
-let cors = require('cors')
+const sendEmail = require("./services/email");
+require("dotenv").config();
+let cors = require("cors");
 app.use(cors());
 
 app.use(express.static("public"));
@@ -16,6 +16,10 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 // Routes
+
+app.get("/", (req, res) => {
+  res.send("hello");
+});
 
 app.use("/api/files/send", require("./routes/send"));
 app.use("/api/files", require("./routes/files"));
